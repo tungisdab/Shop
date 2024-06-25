@@ -18,7 +18,6 @@ dependencies:
   dotted_border: ^2.1.0
   bloc: ^8.1.4
   flutter_bloc: ^8.1.6
-  rive: ^0.13.8
 
 dev_dependencies:
   flutter_test:
