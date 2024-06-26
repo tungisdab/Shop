@@ -163,7 +163,7 @@ class NameField extends StatelessWidget {
       },
       child: const Text(
         // editProfileController.name.value,
-        "Tạ Huế",
+        "Hiiiiiiiiiiiiiiii",
         style: TextStyle(
             fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
       ),
@@ -179,7 +179,7 @@ Widget emailField() => ShaderMask(
     },
     // child: Text(APIs.me.email,
     //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal, color: Colors.white)),
-    child: const Text("email",
+    child: const Text("Trời sẽ nắng vào ngày em yên lòng.",
         style: TextStyle(
             fontSize: 20, fontWeight: FontWeight.normal, color: Colors.white)));
 

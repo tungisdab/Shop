@@ -57,10 +57,10 @@ class NavigationMenu extends StatelessWidget {
                   icon: SizedBox(
                       height: 40,
                       child: Image.asset(
-                        'assets/icons/nav/notification.png',
+                        'assets/icons/nav/heart.png',
                         fit: BoxFit.contain,
                       )),
-                  label: 'Notice',
+                  label: 'Fancy',
                 ),
                 NavigationDestination(
                   icon: SizedBox(

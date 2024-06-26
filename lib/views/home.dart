@@ -18,48 +18,47 @@ class _HomeState extends State<Home> {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 30,
+                  height: 36,
                 ),
-                DottedBorder(
-                  color: Colors.red.shade300,
-                  strokeWidth: 2,
-                  dashPattern: const [10, 10],
-                  padding: const EdgeInsets.all(10),
-                  strokeCap: StrokeCap.round,
-                  borderType: BorderType.RRect,
-                  radius: const Radius.circular(10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                          height: 50,
-                          child: Image.asset(
-                            'assets/icons/common/appicon.png',
-                          )),
-                      const SizedBox(
-                        width: 3,
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                        height: 50,
+                        child: Image.asset(
+                          'assets/icons/common/appicon.png',
+                        )),
+                    const SizedBox(
+                      width: 3,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                            height: 40,
+                            child: Image.asset(
+                              'assets/icons/flags/spain.png',
+                              fit: BoxFit.contain,
+                            )),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        DottedBorder(
+                          color: Colors.red.shade300,
+                          strokeWidth: 2,
+                          dashPattern: const [8, 8],
+                          strokeCap: StrokeCap.round,
+                          borderType: BorderType.RRect,
+                          radius: const Radius.circular(10),
+                          child: SizedBox(
                               height: 40,
                               child: Image.asset(
-                                'assets/icons/flags/spain.png',
+                                'assets/icons/nav/notification.png',
                                 fit: BoxFit.contain,
                               )),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          SizedBox(
-                              height: 40,
-                              child: Image.asset(
-                                'assets/icons/nav/people.png',
-                                fit: BoxFit.contain,
-                              )),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 30,
@@ -227,7 +226,7 @@ class _HomeState extends State<Home> {
                     Row(
                       children: [
                         Image.asset(
-                          'assets/icons/common/color.png',
+                          'assets/icons/common/colorss.png',
                           height: 20,
                         ),
                         const SizedBox(
@@ -242,7 +241,7 @@ class _HomeState extends State<Home> {
                     Row(
                       children: [
                         Image.asset(
-                          'assets/icons/common/money.png',
+                          'assets/icons/common/dollar2.png',
                           height: 20,
                         ),
                         const SizedBox(
@@ -257,7 +256,7 @@ class _HomeState extends State<Home> {
                     Row(
                       children: [
                         Image.asset(
-                          'assets/icons/common/sale.png',
+                          'assets/icons/common/shopping.png',
                           height: 20,
                         ),
                         const SizedBox(

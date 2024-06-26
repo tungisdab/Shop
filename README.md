@@ -31,3 +31,6 @@ Giao diện
 Colors
     red: C53636
     white: FFFFFF
+
+lam cho nhieu thiet bi
+doi icon item
