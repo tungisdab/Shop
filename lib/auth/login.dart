@@ -23,6 +23,7 @@ class _LoginState extends State<Login> {
               child: Image.asset('assets/icons/shoes/sneakerss.png')),
             Container(
               decoration: BoxDecoration(
+                color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(10),
               ),
               child: TextFormField(

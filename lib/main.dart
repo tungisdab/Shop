@@ -1,5 +1,4 @@
-import 'package:app_shoes_ec/auth/login.dart';
-import 'package:app_shoes_ec/views/home.dart';
+import 'package:app_shoes_ec/utils/navigation_menu.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: const Login(),
+      home: const NavigationMenu(),
     );
   }
 }
