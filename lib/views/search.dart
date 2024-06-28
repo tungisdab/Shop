@@ -20,7 +20,7 @@ class _SearchState extends State<Search> {
           ),
         ],
       ),
-      body: Center(
+      body: const Center(
         child: Text('Search'),
       ),
     );

@@ -1,5 +1,7 @@
 import 'package:app_shoes_ec/utils/navigation_menu.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,7 +13,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      // statusBarColor: Colors.transparent,
+      // systemNavigationBarColor: Colors.black,
+    ));
+    return GetMaterialApp(
       title: 'App Shoes E-commerce',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
