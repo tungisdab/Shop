@@ -1,6 +1,8 @@
 import 'package:app_shoes_ec/components/sliver_appbar.dart';
+import 'package:app_shoes_ec/models/product.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -12,218 +14,141 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
             const RecipeDetailAppBar(),
             SliverToBoxAdapter(
               child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            item('assets/images/z1.png', 'Air Force One 1',
-                                '4.5', '5', '1.500.000', '20'),
-                            item('assets/images/z2.png', 'Air Force One 2',
-                                '4.8', '4', '1.600.000', '22'),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            item('assets/images/z3.png', 'Air Force One 3',
-                                '4.5', '2', '1.700.000', '34'),
-                            item('assets/images/z4.png', 'Air Force One 4',
-                                '4.8', '6', '2.500.000', '10'),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            item('assets/images/z5.png', 'Air Force One', '4.5',
-                                '5', '1.500.000', '20'),
-                            item('assets/images/z6.png', 'Air Force One', '4.5',
-                                '5', '1.500.000', '20'),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            item('assets/images/z7.png', 'Air Force One', '4.5',
-                                '5', '1.500.000', '20'),
-                            item('assets/images/z8.png', 'Air Force One', '4.5',
-                                '5', '1.500.000', '20'),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            item('assets/images/z9.png', 'Air Force One', '4.5',
-                                '5', '1.500.000', '20'),
-                            item('assets/images/z10.png', 'Air Force One',
-                                '4.5', '5', '1.500.000', '20'),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            item('assets/images/z11.png', 'Air Force One',
-                                '4.5', '5', '1.500.000', '20'),
-                            item('assets/images/z12.png', 'Air Force One',
-                                '4.5', '5', '1.500.000', '20'),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                      ],
-                    ),
-                  )),
-            )
+                padding: EdgeInsets.all(10.r),
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: screenWidth > 600 ? 3 : 2,
+                    childAspectRatio: screenWidth > 600 ? 0.8 : 0.7,
+                    crossAxisSpacing: 10.w,
+                    mainAxisSpacing: 10.h,
+                  ),
+                  itemCount: data.length,
+                  itemBuilder: (context, index) {
+                    return items(
+                      data[index].name,
+                      data[index].path,
+                      data[index].price,
+                      data[index].sale,
+                      screenHeight,
+                      screenWidth,
+                    );
+                  },
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget item(String path, String name, String start, String color,
-          String price, String sale) =>
+  Widget items(String name, String path, String price, String sale,
+          double screenHeight, double screenWidth) =>
       Container(
         decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.red.shade300,
-            width: 2,
-          ),
-          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10.r),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.3),
+              spreadRadius: 3,
+              blurRadius: 5,
+              offset: const Offset(3, 5), // changes position of shadow
+            ),
+          ],
         ),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              DottedBorder(
-                color: Colors.red.shade300,
-                strokeWidth: 1,
-                dashPattern: const [10, 10],
-                strokeCap: StrokeCap.round,
-                borderType: BorderType.RRect,
-                radius: const Radius.circular(10),
-                child: SizedBox(
-                  height: 200,
-                  width: 180,
-                  child: Image.asset(
-                    path,
-                    fit: BoxFit.contain,
+              Stack(
+                children: [
+                  DottedBorder(
+                    color: Colors.red.shade300,
+                    strokeWidth: 2.h,
+                    dashPattern: [10.h, 10.h],
+                    strokeCap: StrokeCap.round,
+                    borderType: BorderType.RRect,
+                    radius: Radius.circular(10.r),
+                    child: SizedBox(
+                      height: screenHeight >= screenWidth
+                          ? screenHeight * 0.14
+                          : screenWidth * 0.14,
+                      width: double.infinity,
+                      child: Image.asset(
+                        path,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                ),
+                  Positioned(
+                    top: 5,
+                    left: 5,
+                    child: Container(
+                      height: 24.h,
+                      width: 24.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5.r),
+                      ),
+                      child: Image.asset(
+                        "assets/icons/nav/heart.png",
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: 10.h,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 10),
+                padding: const EdgeInsets.only(left: 10).w,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
                       name,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: Colors.black),
+                      style: TextStyle(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 20.sp * (screenWidth > 600 ? 0.4: 1.0), // Adjust font size based on screen width
+                        color: Colors.black,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                    Text(
+                      'đ: $price',
+                      style: TextStyle(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 20.sp * (screenWidth > 600 ? 0.4 : 1.0), // Adjust font size based on screen width
+                        color: Colors.black,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                     ),
                     Row(
                       children: [
-                        Row(
-                          children: [
-                            Image.asset(
-                              'assets/icons/common/star.png',
-                              height: 16,
-                            ),
-                            Image.asset(
-                              'assets/icons/common/star.png',
-                              height: 16,
-                            ),
-                            Image.asset(
-                              'assets/icons/common/star.png',
-                              height: 16,
-                            ),
-                            Image.asset(
-                              'assets/icons/common/star.png',
-                              height: 16,
-                            ),
-                            Image.asset(
-                              'assets/icons/common/star.png',
-                              height: 16,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          width: 10,
+                        Image.asset(
+                          'assets/icons/common/tag.png',
+                          width: 20.sp * (screenWidth > 600 ? 0.4: 1.0),
                         ),
                         Text(
-                          start,
-                          style: const TextStyle(fontSize: 18),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Column(
-                          children: [
-                            Image.asset(
-                              'assets/icons/common/colorpalette.png',
-                              height: 24,
-                            ),
-                            const Text(
-                              '\$',
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  color: Color.fromARGB(255, 5, 5, 5)),
-                            ),
-                            Image.asset(
-                              'assets/icons/common/tag.png',
-                              height: 24,
-                            ),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              ': $color colors',
-                              style: const TextStyle(fontSize: 22),
-                            ),
-                            Text(
-                              ': $price',
-                              style: const TextStyle(fontSize: 22),
-                            ),
-                            Text(
-                              ': $sale%',
-                              style: const TextStyle(
-                                  fontSize: 22, color: Colors.red),
-                            ),
-                          ],
+                          ': $sale%',
+                          style: TextStyle(fontSize: 20.sp * (screenWidth > 600 ? 0.4: 1.0), color: Colors.red), // Adjust font size based on screen width
                         ),
                       ],
                     ),
@@ -235,3 +160,56 @@ class _HomeState extends State<Home> {
         ),
       );
 }
+
+final data = [
+  Product(
+      name: 'Air Force One 1',
+      path: 'assets/images/z1.png',
+      price: '1.501.000',
+      sale: '11'),
+  Product(
+      name: 'Air Force One 2',
+      path: 'assets/images/z2.png',
+      price: '1.502.000',
+      sale: '22'),
+  Product(
+      name: 'Air Force One 3',
+      path: 'assets/images/z3.png',
+      price: '1.503.000',
+      sale: '33'),
+  Product(
+      name: 'Air Force One 4',
+      path: 'assets/images/z4.png',
+      price: '1.504.000',
+      sale: '44'),
+  Product(
+      name: 'Air Force One 5',
+      path: 'assets/images/z5.png',
+      price: '1.505.000',
+      sale: '55'),
+  Product(
+      name: 'Air Force One 6',
+      path: 'assets/images/z6.png',
+      price: '1.506.000',
+      sale: '66'),
+  Product(
+      name: 'Air Force One 7',
+      path: 'assets/images/z7.png',
+      price: '1.507.000',
+      sale: '77'),
+  Product(
+      name: 'Air Force One 8',
+      path: 'assets/images/z8.png',
+      price: '1.508.000',
+      sale: '88'),
+  Product(
+      name: 'Air Force One 9',
+      path: 'assets/images/z9.png',
+      price: '1.509.000',
+      sale: '99'),
+  Product(
+      name: 'Air Force One 11',
+      path: 'assets/images/z10.png',
+      price: '1.510.000',
+      sale: '1'),
+];

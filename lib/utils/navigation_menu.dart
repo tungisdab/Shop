@@ -4,6 +4,7 @@ import 'package:app_shoes_ec/views/notice.dart';
 import 'package:app_shoes_ec/views/profile.dart';
 import 'package:app_shoes_ec/views/search.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class NavigationMenu extends StatelessWidget {
@@ -14,6 +15,7 @@ class NavigationMenu extends StatelessWidget {
     final controller = Get.put(NavigationController());
 
     return Scaffold(
+      backgroundColor: Colors.white,
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(15),
         child: Obx(
@@ -37,7 +39,7 @@ class NavigationMenu extends StatelessWidget {
               destinations: [
                 NavigationDestination(
                   icon: SizedBox(
-                      height: 40,
+                      height: 40.h,
                       child: Image.asset(
                         'assets/icons/nav/shoes.png',
                         fit: BoxFit.contain,
@@ -46,7 +48,7 @@ class NavigationMenu extends StatelessWidget {
                 ),
                 NavigationDestination(
                   icon: SizedBox(
-                      height: 40,
+                      height: 40.h,
                       child: Image.asset(
                         'assets/icons/nav/loupe.png',
                         fit: BoxFit.contain,
@@ -55,7 +57,7 @@ class NavigationMenu extends StatelessWidget {
                 ),
                 NavigationDestination(
                   icon: SizedBox(
-                      height: 40,
+                      height: 40.h,
                       child: Image.asset(
                         'assets/icons/nav/heart.png',
                         fit: BoxFit.contain,
@@ -64,7 +66,7 @@ class NavigationMenu extends StatelessWidget {
                 ),
                 NavigationDestination(
                   icon: SizedBox(
-                      height: 40,
+                      height: 40.h,
                       child: Image.asset(
                         'assets/icons/nav/shopping.png',
                         fit: BoxFit.contain,
@@ -73,7 +75,7 @@ class NavigationMenu extends StatelessWidget {
                 ),
                 NavigationDestination(
                   icon: SizedBox(
-                      height: 40,
+                      height: 40.h,
                       child: Image.asset(
                         'assets/icons/nav/people.png',
                         fit: BoxFit.contain,
